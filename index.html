@@ -1050,12 +1050,18 @@ function initScrollReveal(){
 function initCountdown(){
   var target=new Date('2026-10-31T11:00:00-04:00');
   var ids=['Dias','Horas','Mins','Secs'];
+  var first=true;
   function updateCd(){
     var diff=target-Date.now();
     if(diff<=0){ids.forEach(function(id){var el=document.getElementById('cd'+id);if(el)el.textContent='00';});return;}
     var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
     var vals=[String(d).padStart(3,'0'),String(h).padStart(2,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')];
-    ids.forEach(function(id,i){var el=document.getElementById('cd'+id);if(!el)return;if(el.textContent!==vals[i]){gsap.to(el,{y:-8,opacity:0,duration:.12,onComplete:function(){el.textContent=vals[i];gsap.to(el,{y:0,opacity:1,duration:.12})}});}});
+    ids.forEach(function(id,i){
+      var el=document.getElementById('cd'+id);if(!el)return;
+      if(first){el.textContent=vals[i];return;}
+      if(el.textContent!==vals[i]){gsap.to(el,{y:-8,opacity:0,duration:.12,onComplete:function(){el.textContent=vals[i];gsap.to(el,{y:0,opacity:1,duration:.12})}});}
+    });
+    first=false;
   }
   updateCd();setInterval(updateCd,1000);
 }
