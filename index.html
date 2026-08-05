@@ -124,37 +124,23 @@ section{padding:64px 26px}
 #sgifts::before{background-image:url('./bg-flores-2.jpg');opacity:.22}
 #srsvp::before{background-image:url('./bg-flores-1.jpg');opacity:.30}
 
-/* ── COUNTDOWN (jennifer flip style) ── */
-#scd{padding-top:48px;padding-bottom:48px}
-.countdown-grid{display:flex;justify-content:center;gap:12px;perspective:1200px}
-.cd-block{
-  min-width:78px;padding:24px 14px 20px;text-align:center;
-  background:rgba(255,255,255,.07);border-radius:10px;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(192,192,192,.18);position:relative;overflow:hidden;
-}
-.cd-block::before{
-  content:'';position:absolute;top:50%;left:12px;right:12px;height:1px;
-  background:linear-gradient(to right,transparent,rgba(192,192,192,.3),transparent);
-}
-.cd-block::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(192,192,192,.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-.cd-num{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
-  font-size:clamp(40px,7vw,60px);line-height:1;
+/* ── COUNTDOWN (nelly ring style) ── */
+#scd{padding-top:48px;padding-bottom:48px;text-align:center}
+.cd-wrap{position:relative;max-width:380px;margin:0 auto}
+.cd-ring{position:absolute;inset:-10px;border-radius:14px;border:1px solid rgba(192,192,192,.1);pointer-events:none;animation:cdRing 4.5s ease-in-out infinite}
+@keyframes cdRing{0%,100%{border-color:rgba(192,192,192,.1);box-shadow:0 0 0 0 rgba(192,192,192,0)}50%{border-color:rgba(192,192,192,.24);box-shadow:0 0 30px rgba(192,192,192,.06)}}
+.cd-row{display:flex;align-items:center;justify-content:center;margin:24px 0 0}
+.cd-unit{display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,4vw,22px)}
+.cd-value{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(38px,11vw,54px);font-weight:400;line-height:1;letter-spacing:-1px;
   background:linear-gradient(105deg,#999 0%,#e0e0e0 25%,#fff 50%,#e0e0e0 75%,#999 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 4s linear infinite;
-  transform-style:preserve-3d;
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;transition:transform .15s,opacity .15s;
 }
-.cd-lbl{
-  font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.5em;
-  text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px;
-}
+.cd-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:6px}
+.cd-sep{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;opacity:.3}
+.cd-dot{width:3px;height:3px;background:var(--accent);border-radius:50%}
+.cd-para{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--accent);opacity:.42;display:block;text-align:center;margin-top:16px}
 
 /* ── UBICACION ── */
 .loc-card{
@@ -183,50 +169,42 @@ section{padding:64px 26px}
 .cal-c{text-align:center}
 .cal-c p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#fff;margin-bottom:18px}
 
-/* ── ITINERARIO V3 (cristal-humberto centered glow) ── */
-#siti{overflow:visible;padding-left:24px;padding-right:24px}
-.itv3{position:relative;display:flex;flex-direction:column;align-items:center;padding:10px 0 10px}
-.itv3-track{
-  position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;z-index:0;
-  background:linear-gradient(to bottom,transparent 0%,rgba(192,192,192,.35) 10%,rgba(255,255,255,.18) 45%,rgba(192,192,192,.30) 80%,transparent 100%);
-}
-.itv3-glow{
-  position:absolute;left:50%;transform:translateX(-50%);top:0;
-  width:5px;height:110px;
-  background:linear-gradient(to bottom,transparent,rgba(192,192,192,.55) 20%,rgba(192,192,192,.90) 50%,rgba(192,192,192,.55) 80%,transparent);
-  filter:blur(3px);border-radius:6px;z-index:1;pointer-events:none;
-}
-.itv3-item{
-  position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;
-  text-align:center;padding:30px 16px 4px;width:100%;
-}
-.itv3-gem{
-  width:9px;height:9px;
-  background:linear-gradient(135deg,#e0e0e0 30%,#c0c0c0);
-  transform:rotate(45deg);border-radius:2px;
-  box-shadow:0 0 0 4px rgba(220,220,220,.15),0 0 18px rgba(220,220,220,.5);
-  margin-bottom:18px;flex-shrink:0;
-}
-.itv3-gem-white{
-  background:linear-gradient(135deg,#fff 30%,#aaa);
-  box-shadow:0 0 0 4px rgba(255,255,255,.14),0 0 18px rgba(255,255,255,.35);
-}
-.itv3-gem-dim{
-  background:linear-gradient(135deg,#5c0701 30%,#3a0400);
-  box-shadow:0 0 0 4px rgba(92,7,1,.10),0 0 18px rgba(92,7,1,.38);
-}
-.itv3-time{
-  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
-  letter-spacing:8px;color:#fff;line-height:1;margin-bottom:6px;text-indent:8px;
-}
-.itv3-ev{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;
-  color:rgba(255,255,255,.55);letter-spacing:3px;text-transform:uppercase;line-height:1.5;text-indent:3px;
-}
-.itv3-sub{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;
-  color:var(--accent);opacity:.75;letter-spacing:1px;margin-top:4px;line-height:1.4;
-}
+/* ── ITINERARIO (camino en S con scroll) ── */
+#siti{overflow:hidden}
+.timeline{margin-top:44px;position:relative;padding:18px 0 6px;min-height:400px}
+.tl-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.tl-svg-bg{stroke:rgba(192,192,192,.18);stroke-width:1;fill:none;stroke-dasharray:2 5}
+.tl-svg-path{stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;fill:none;filter:drop-shadow(0 0 5px rgba(192,192,192,.35))}
+.tl-row{position:relative;z-index:1;min-height:158px;display:flex;align-items:center;margin-bottom:14px}
+.tl-row[data-side="left"]{padding-left:58px;padding-right:44%;justify-content:flex-start;text-align:left}
+.tl-row[data-side="right"]{padding-right:58px;padding-left:44%;justify-content:flex-end;text-align:right}
+.tl-row-inner{max-width:168px;display:flex;flex-direction:column;gap:2px;position:relative;padding:6px 4px}
+.tl-row-inner::before{content:'';position:absolute;inset:-6px -14px;background:radial-gradient(ellipse at center,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,0) 100%);z-index:-1;border-radius:16px;pointer-events:none}
+.tl-t{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--accent);letter-spacing:2.5px;text-transform:uppercase;line-height:1}
+.tl-ev{font-family:'Cormorant Garamond',serif;font-size:19px;color:#fff;font-weight:400;line-height:1.22;margin-top:4px}
+.tl-de{font-size:11px;color:#fff;opacity:.58;line-height:1.55;margin-top:3px}
+.tl-row-inner > *{opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease}
+.tl-row[data-side="left"] .tl-row-inner > *{transform:translateY(8px) translateX(-6px)}
+.tl-row[data-side="right"] .tl-row-inner > *{transform:translateY(8px) translateX(6px)}
+.tl-row.on .tl-row-inner > *{opacity:1;transform:translateY(0) translateX(0)}
+.tl-row.on .tl-t{transition-delay:.08s}
+.tl-row.on .tl-ev{transition-delay:.20s}
+.tl-row.on .tl-de{transition-delay:.32s}
+.tl-dot{position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:#000;border:1.5px solid var(--accent);transform:scale(0);transition:transform .55s cubic-bezier(.175,.885,.32,1.275),box-shadow .55s,background .55s;z-index:2}
+.tl-row[data-side="left"] .tl-dot{left:22px}
+.tl-row[data-side="right"] .tl-dot{right:22px}
+.tl-row.on .tl-dot{transform:scale(1);background:var(--accent);box-shadow:0 0 0 3px rgba(0,0,0,.9),0 0 12px rgba(192,192,192,.55),0 0 24px rgba(192,192,192,.3)}
+.tl-orn{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;border:1px dashed rgba(192,192,192,.25);opacity:0;animation:tlOrnRotate 22s linear infinite;transition:opacity .9s ease;pointer-events:none;z-index:1}
+.tl-row[data-side="left"] .tl-orn{left:9px}
+.tl-row[data-side="right"] .tl-orn{right:9px}
+.tl-row.on .tl-orn{opacity:1}
+@keyframes tlOrnRotate{to{transform:rotate(360deg)}}
+.tl-pulse{position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;border:1.5px solid var(--accent);opacity:0;pointer-events:none;z-index:1}
+.tl-row[data-side="left"] .tl-pulse{left:20px}
+.tl-row[data-side="right"] .tl-pulse{right:20px}
+.tl-row.on .tl-pulse{animation:tlPulse 2.8s ease-out 1}
+@keyframes tlPulse{0%{transform:scale(1);opacity:.85}100%{transform:scale(3);opacity:0}}
+@media(prefers-reduced-motion:reduce){.tl-orn,.tl-pulse{animation:none!important}}
 
 /* ── DRESS CODE ── */
 .dc-note{
@@ -536,13 +514,22 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(255,255,2
 
   <!-- COUNTDOWN -->
   <section id="scd" class="section-bg">
-    <h2 class="sec-title rv">Cuenta Regresiva</h2>
-    <div class="countdown-grid rv">
-      <div class="cd-block"><div class="cd-num" id="cdD">000</div><div class="cd-lbl">D&iacute;as</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-lbl">Horas</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-lbl">Min</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-lbl">Seg</div></div>
+    <span class="eyebrow rv">Faltan</span>
+    <div class="cd-wrap rv">
+      <div class="cd-ring"></div>
+      <div class="card" style="margin:0 auto">
+        <div class="cd-row">
+          <div class="cd-unit"><span class="cd-value" id="cdDias">000</span><span class="cd-lbl">D&iacute;as</span></div>
+          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
+          <div class="cd-unit"><span class="cd-value" id="cdHoras">00</span><span class="cd-lbl">Horas</span></div>
+          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
+          <div class="cd-unit"><span class="cd-value" id="cdMins">00</span><span class="cd-lbl">Min</span></div>
+          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
+          <div class="cd-unit"><span class="cd-value" id="cdSecs">00</span><span class="cd-lbl">Seg</span></div>
+        </div>
+      </div>
     </div>
+    <span class="cd-para rv">Para el Gran D&iacute;a</span>
   </section>
 
   <div class="orn rv">
@@ -679,24 +666,47 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(255,255,2
     </svg>
   </div>
 
-  <!-- ITINERARIO V3 (cristal-humberto centered glow) -->
+  <!-- ITINERARIO (camino en S) -->
   <section id="siti" class="section-bg">
     <div class="eyebrow rv">Programa del D&iacute;a</div>
     <h2 class="sec-title rv">Itinerario</h2>
-    <div class="itv3">
-      <div class="itv3-track"></div>
-      <div class="itv3-glow" id="itvGlow"></div>
-      <div class="itv3-item rv">
-        <div class="itv3-gem"></div>
-        <div class="itv3-time">11:00</div>
-        <div class="itv3-ev">Ceremonia Religiosa</div>
-        <div class="itv3-sub">Holy Angels Roman Catholic Church</div>
+    <div class="timeline" id="tlWrap">
+      <svg class="tl-svg" id="tlSvg" preserveAspectRatio="none" aria-hidden="true">
+        <path class="tl-svg-bg" id="tlPathBg"/>
+        <path class="tl-svg-path" id="tlPath"/>
+      </svg>
+
+      <div class="tl-row" data-side="left">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">11:00 AM</p><p class="tl-ev">Ceremonia Religiosa</p><p class="tl-de">Holy Angels Roman Catholic Church</p></div>
       </div>
-      <div class="itv3-item rv">
-        <div class="itv3-gem itv3-gem-white"></div>
-        <div class="itv3-time">17:00</div>
-        <div class="itv3-ev">Recepci&oacute;n</div>
-        <div class="itv3-sub">Castle McCulloch</div>
+      <div class="tl-row" data-side="right">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">1:00 PM</p><p class="tl-ev">C&oacute;ctel de Bienvenida</p><p class="tl-de">Por confirmar</p></div>
+      </div>
+      <div class="tl-row" data-side="left">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">3:00 PM</p><p class="tl-ev">Sesi&oacute;n de Fotos</p><p class="tl-de">Por confirmar</p></div>
+      </div>
+      <div class="tl-row" data-side="right">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">5:00 PM</p><p class="tl-ev">Recepci&oacute;n</p><p class="tl-de">Castle McCulloch</p></div>
+      </div>
+      <div class="tl-row" data-side="left">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">6:00 PM</p><p class="tl-ev">Cena</p><p class="tl-de">Por confirmar</p></div>
+      </div>
+      <div class="tl-row" data-side="right">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">7:30 PM</p><p class="tl-ev">Primer Baile</p><p class="tl-de">Por confirmar</p></div>
+      </div>
+      <div class="tl-row" data-side="left">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">8:00 PM</p><p class="tl-ev">Brindis</p><p class="tl-de">Por confirmar</p></div>
+      </div>
+      <div class="tl-row" data-side="right">
+        <div class="tl-orn"></div><div class="tl-pulse"></div><div class="tl-dot"></div>
+        <div class="tl-row-inner"><p class="tl-t">9:00 PM</p><p class="tl-ev">Fiesta</p><p class="tl-de">&iexcl;Que comience la celebraci&oacute;n!</p></div>
       </div>
     </div>
   </section>
@@ -1036,66 +1046,85 @@ function initScrollReveal(){
   });
 }
 
-/* ── COUNTDOWN ── */
+/* ── COUNTDOWN (nelly style) ── */
 function initCountdown(){
-  var target=new Date('2026-10-31T11:00:00-04:00').getTime();
-  var els={D:document.getElementById('cdD'),H:document.getElementById('cdH'),
-           M:document.getElementById('cdM'),S:document.getElementById('cdS')};
-  var prev={D:'',H:'',M:'',S:''};
-  function flipOn(el,nv){
-    gsap.to(el,{rotateX:-90,duration:.24,ease:'power2.in',onComplete:function(){
-      el.textContent=nv;
-      gsap.fromTo(el,{rotateX:90},{rotateX:0,duration:.34,ease:'power2.out'});
-    }});
+  var target=new Date('2026-10-31T11:00:00-04:00');
+  var ids=['Dias','Horas','Mins','Secs'];
+  function updateCd(){
+    var diff=target-Date.now();
+    if(diff<=0){ids.forEach(function(id){var el=document.getElementById('cd'+id);if(el)el.textContent='00';});return;}
+    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    var vals=[String(d).padStart(3,'0'),String(h).padStart(2,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')];
+    ids.forEach(function(id,i){var el=document.getElementById('cd'+id);if(!el)return;if(el.textContent!==vals[i]){gsap.to(el,{y:-8,opacity:0,duration:.12,onComplete:function(){el.textContent=vals[i];gsap.to(el,{y:0,opacity:1,duration:.12})}});}});
   }
-  function tick(){
-    var d=target-Date.now();if(d<=0)return;
-    var vals={
-      D:String(Math.floor(d/864e5)).padStart(3,'0'),
-      H:String(Math.floor(d%864e5/36e5)).padStart(2,'0'),
-      M:String(Math.floor(d%36e5/6e4)).padStart(2,'0'),
-      S:String(Math.floor(d%6e4/1e3)).padStart(2,'0')
-    };
-    ['D','H','M','S'].forEach(function(k){
-      if(vals[k]!==prev[k]){flipOn(els[k],vals[k]);prev[k]=vals[k]}
-    });
-  }
-  tick();setInterval(tick,1000);
-  ScrollTrigger.create({trigger:'#scd',start:'top 82%',once:true,onEnter:function(){
-    gsap.fromTo('.cd-block',{opacity:0,y:40,rotateX:-30},{opacity:1,y:0,rotateX:0,duration:1,stagger:.12,ease:'power2.out'});
-  }});
+  updateCd();setInterval(updateCd,1000);
 }
 
-/* ── ITINERARY V3 (cristal glow) ── */
-function initItinerary(){
-  var glow=document.getElementById('itvGlow');
-  var section=document.getElementById('siti');
-  var items=document.querySelectorAll('.itv3-item');
-  ScrollTrigger.create({
-    trigger:section,start:'top 58%',end:'bottom 42%',scrub:1.8,
-    onUpdate:function(self){
-      var track=section.querySelector('.itv3-track');
-      var h=track.offsetHeight-55;
-      glow.style.top=(self.progress*h)+'px';
+/* ── ITINERARY — CAMINO EN S ── */
+function buildTimelinePath(){
+  var wrap=document.getElementById('tlWrap');
+  var svg=document.getElementById('tlSvg');
+  var path=document.getElementById('tlPath');
+  var bg=document.getElementById('tlPathBg');
+  if(!wrap||!svg||!path)return;
+  var rows=wrap.querySelectorAll('.tl-row');
+  if(!rows.length)return;
+
+  function build(){
+    var rect=wrap.getBoundingClientRect();
+    var W=rect.width;
+    var H=wrap.offsetHeight;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    svg.setAttribute('width',W);
+    svg.setAttribute('height',H);
+
+    var points=[];
+    for(var i=0;i<rows.length;i++){
+      var rRect=rows[i].getBoundingClientRect();
+      var y=(rRect.top-rect.top)+rRect.height/2;
+      var side=rows[i].dataset.side;
+      var x=side==='left'?29:W-29;
+      points.push({x:x,y:y});
     }
-  });
-  items.forEach(function(item){
-    var gem=item.querySelector('.itv3-gem');
-    var isWhite=gem.classList.contains('itv3-gem-white');
-    var gc=isWhite?'255,255,255':'38,62,15';
-    gsap.fromTo(gem,{scale:0,opacity:0},{scale:1,opacity:1,duration:.6,ease:'back.out(2.8)',
-      scrollTrigger:{trigger:item,start:'top 86%',once:true},
-      onComplete:function(){
-        gsap.timeline()
-          .to(gem,{scale:1.4,filter:'drop-shadow(0 0 20px rgba('+gc+',1))',duration:.30,ease:'power2.out'})
-          .to(gem,{scale:1,filter:'drop-shadow(0 0 5px rgba('+gc+',.35))',duration:.28,ease:'power2.in'})
-          .to(gem,{scale:1.2,filter:'drop-shadow(0 0 14px rgba('+gc+',.8))',duration:.22,ease:'power2.out'})
-          .to(gem,{scale:1,filter:'drop-shadow(0 0 4px rgba('+gc+',.25))',duration:.32,ease:'power2.in'});
+
+    var d='M '+points[0].x+' '+points[0].y;
+    for(var j=1;j<points.length;j++){
+      var p0=points[j-1];
+      var p1=points[j];
+      var midY=(p0.y+p1.y)/2;
+      d+=' C '+p0.x+' '+midY+', '+p1.x+' '+midY+', '+p1.x+' '+p1.y;
+    }
+    path.setAttribute('d',d);
+    if(bg)bg.setAttribute('d',d);
+
+    var len=path.getTotalLength();
+    path.style.strokeDasharray=len;
+    path.style.strokeDashoffset=len;
+
+    window.__tlData={path:path,len:len,rows:rows};
+    if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh();
+  }
+
+  build();
+  var rzT;
+  window.addEventListener('resize',function(){clearTimeout(rzT);rzT=setTimeout(build,140)},{passive:true});
+  window.addEventListener('load',build);
+}
+
+function initItinerary(){
+  buildTimelinePath();
+  ScrollTrigger.create({
+    trigger:'#siti',start:'top 78%',end:'bottom 58%',scrub:0.6,
+    onUpdate:function(self){
+      var data=window.__tlData;
+      if(!data)return;
+      data.path.style.strokeDashoffset=data.len*(1-self.progress);
+      var n=Math.ceil(self.progress*data.rows.length);
+      for(var i=0;i<data.rows.length;i++){
+        if(i<n)data.rows[i].classList.add('on');
+        else data.rows[i].classList.remove('on');
       }
-    });
-    var els=[item.querySelector('.itv3-time'),item.querySelector('.itv3-ev'),item.querySelector('.itv3-sub')].filter(Boolean);
-    gsap.fromTo(els,{y:14,opacity:0},{y:0,opacity:1,duration:.8,ease:'power2.out',stagger:.08,
-      scrollTrigger:{trigger:item,start:'top 86%',once:true}});
+    }
   });
 }
 
