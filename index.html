@@ -40,7 +40,7 @@ body{
 }
 @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
 .shimmer-text{
-  background:linear-gradient(105deg,#8a7a5a 0%,#c4a84e 25%,#dcc06a 50%,#c4a84e 75%,#8a7a5a 100%);
+  background:linear-gradient(105deg,#6b6b6b 0%,#a8a8a8 25%,#d8d8d8 50%,#a8a8a8 75%,#6b6b6b 100%);
   background-size:200% auto;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:shimmer 4s linear infinite;
@@ -77,8 +77,11 @@ body{
 .hero-bottom{position:relative;z-index:3;margin-top:auto;padding:0 28px 62px;text-align:center}
 .hero-name{
   font-family:'Great Vibes',cursive;font-size:72px;line-height:1.05;
-  color:var(--dark);margin-bottom:10px;text-shadow:0 2px 18px rgba(122,140,110,.2);
-  transform:translateY(30px);opacity:0;
+  margin-bottom:10px;transform:translateY(30px);opacity:0;
+  background:linear-gradient(105deg,#4a4a4a 0%,#8a8a8a 20%,#c8c8c8 40%,#e0e0e0 50%,#c8c8c8 60%,#8a8a8a 80%,#4a4a4a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+  filter:drop-shadow(0 2px 8px rgba(100,100,100,.15));
 }
 .hero-sub{display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateY(16px);opacity:0}
 .hero-amp{
@@ -105,7 +108,12 @@ section{padding:64px 26px}
   font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:5px;
   text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:8px;opacity:.7;
 }
-.sec-title{font-family:'Great Vibes',cursive;font-size:50px;color:var(--dark);text-align:center;line-height:1.1;margin-bottom:30px}
+.sec-title{
+  font-family:'Great Vibes',cursive;font-size:50px;text-align:center;line-height:1.1;margin-bottom:30px;
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 20%,#d0d0d0 40%,#e8e8e8 50%,#d0d0d0 60%,#9a9a9a 80%,#5a5a5a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
 
 /* ── SECTION BG (jennifer effect) ── */
 .section-bg{position:relative;overflow:hidden}
@@ -136,7 +144,7 @@ section{padding:64px 26px}
 .cd-unit{display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,4vw,22px)}
 .cd-value{
   font-family:'Cormorant Garamond',serif;font-size:clamp(38px,11vw,54px);font-weight:400;line-height:1;letter-spacing:-1px;
-  background:linear-gradient(105deg,#5a6b50 0%,#7a8c6e 25%,#9aad8a 50%,#7a8c6e 75%,#5a6b50 100%);
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 25%,#d8d8d8 50%,#9a9a9a 75%,#5a5a5a 100%);
   background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:shimmer 4s linear infinite;transition:transform .15s,opacity .15s;
 }
@@ -151,7 +159,12 @@ section{padding:64px 26px}
   box-shadow:0 6px 36px rgba(90,107,80,.12);margin-bottom:18px;text-align:center;
   border:1px solid rgba(122,140,110,.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.loc-card .lt{font-family:'Great Vibes',cursive;font-size:36px;color:var(--dark);margin-bottom:4px}
+.loc-card .lt{
+  font-family:'Great Vibes',cursive;font-size:36px;margin-bottom:4px;
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 20%,#d0d0d0 40%,#e0e0e0 50%,#d0d0d0 60%,#9a9a9a 80%,#5a5a5a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
 .loc-card .ls{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:3px;
   text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.7;
@@ -260,7 +273,12 @@ section{padding:64px 26px}
 .env-open-content{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s .3s ease,opacity .4s .38s ease;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 20px;text-align:center;pointer-events:none}
 .env-interactive.open .env-open-content{max-height:240px;opacity:1;pointer-events:auto}
 .env-mailbox-icon{width:40px;height:40px;color:var(--accent);margin-top:10px}
-.env-title{font-family:'Great Vibes',cursive;font-size:30px;color:var(--dark);letter-spacing:.5px;line-height:1.2}
+.env-title{
+  font-family:'Great Vibes',cursive;font-size:30px;letter-spacing:.5px;line-height:1.2;
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 20%,#d0d0d0 40%,#e0e0e0 50%,#d0d0d0 60%,#9a9a9a 80%,#5a5a5a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
 .env-desc{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(58,58,46,.65);line-height:1.75}
 .env-tap-hint{font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);opacity:.7;margin-top:6px;transition:opacity .3s}
 .env-interactive.open~.env-tap-hint{opacity:0;pointer-events:none}
@@ -286,7 +304,10 @@ section{padding:64px 26px}
 .rsvp-ornament{display:block;margin:0 auto 28px;width:min(260px,70vw);height:auto}
 .rsvp-title{
   font-family:'Great Vibes',cursive;font-size:clamp(34px,5vw,52px);
-  color:var(--dark);margin-bottom:18px;line-height:1.15;
+  margin-bottom:18px;line-height:1.15;
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 20%,#d0d0d0 40%,#e0e0e0 50%,#d0d0d0 60%,#9a9a9a 80%,#5a5a5a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
 }
 .rsvp-title em{color:var(--sage);font-style:normal}
 .rsvp-text{
@@ -356,7 +377,12 @@ section{padding:64px 26px}
 
 /* ── FOOTER ── */
 footer{padding:50px 20px;text-align:center}
-footer .fn{font-family:'Great Vibes',cursive;font-size:44px;color:var(--dark)}
+footer .fn{
+  font-family:'Great Vibes',cursive;font-size:44px;
+  background:linear-gradient(105deg,#5a5a5a 0%,#9a9a9a 20%,#d0d0d0 40%,#e0e0e0 50%,#d0d0d0 60%,#9a9a9a 80%,#5a5a5a 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
 footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-top:6px;opacity:.7}
 footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(58,58,46,.3);margin-top:18px;letter-spacing:2px;text-transform:uppercase}
 
