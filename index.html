@@ -135,23 +135,31 @@ section{padding:64px 26px}
 #sgifts::before{background-image:url('./bg-leaves.jpeg');opacity:.25}
 #srsvp::before{background-image:url('./bg-hero.jpeg');opacity:.28}
 
-/* ── COUNTDOWN (nelly ring style) ── */
+/* ── COUNTDOWN (circular rings 2x2) ── */
 #scd{padding-top:48px;padding-bottom:48px;text-align:center}
 .cd-wrap{position:relative;max-width:380px;margin:0 auto}
-.cd-ring{position:absolute;inset:-10px;border-radius:14px;border:1px solid rgba(122,140,110,.1);pointer-events:none;animation:cdRing 4.5s ease-in-out infinite}
-@keyframes cdRing{0%,100%{border-color:rgba(122,140,110,.1);box-shadow:0 0 0 0 rgba(122,140,110,0)}50%{border-color:rgba(122,140,110,.24);box-shadow:0 0 30px rgba(122,140,110,.06)}}
-.cd-row{display:flex;align-items:center;justify-content:center;margin:24px 0 0}
-.cd-unit{display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,4vw,22px)}
+.cd-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:340px;margin:24px auto 0}
+.cd-circle{position:relative;width:140px;height:140px;margin:0 auto}
+.cd-circle svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.cd-circle .cd-track{fill:none;stroke:rgba(180,180,180,.12);stroke-width:1.5}
+.cd-circle .cd-arc{fill:none;stroke:url(#silverGrad);stroke-width:2;stroke-linecap:round;stroke-dasharray:408;stroke-dashoffset:408;transition:stroke-dashoffset 1s ease;filter:drop-shadow(0 0 6px rgba(200,200,200,.25))}
+.cd-circle .cd-glow{fill:none;stroke:rgba(200,200,200,.06);stroke-width:6;stroke-linecap:round;stroke-dasharray:408;stroke-dashoffset:408;transition:stroke-dashoffset 1s ease}
+.cd-circle .cd-dot-marker{fill:#d0d0d0;filter:drop-shadow(0 0 4px rgba(220,220,220,.5));transition:all 1s ease}
+.cd-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .cd-value{
-  font-family:'Cormorant Garamond',serif;font-size:clamp(38px,11vw,54px);font-weight:400;line-height:1;letter-spacing:-1px;
-  background:linear-gradient(105deg,#777 0%,#bbb 25%,#e8e8e8 50%,#bbb 75%,#777 100%);
+  font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1;letter-spacing:-1px;
+  background:linear-gradient(105deg,#888 0%,#ccc 25%,#f0f0f0 50%,#ccc 75%,#888 100%);
   background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:shimmer 4s linear infinite;transition:transform .15s,opacity .15s;
 }
-.cd-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:6px}
-.cd-sep{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;opacity:.3}
-.cd-dot{width:3px;height:3px;background:var(--accent);border-radius:50%}
-.cd-para{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--accent);opacity:.42;display:block;text-align:center;margin-top:16px}
+.cd-lbl{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:11px;letter-spacing:.25em;text-transform:uppercase;margin-top:4px;
+  background:linear-gradient(105deg,#777 0%,#aaa 30%,#ddd 50%,#aaa 70%,#777 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+.cd-para{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:rgba(200,200,200,.42);display:block;text-align:center;margin-top:16px}
+@keyframes cdPulseRing{0%,100%{opacity:.08}50%{opacity:.18}}
 
 /* ── UBICACION ── */
 .loc-card{
@@ -545,16 +553,53 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
   <section id="scd" class="section-bg">
     <span class="eyebrow rv">Faltan</span>
     <div class="cd-wrap rv">
-      <div class="cd-ring"></div>
-      <div class="card" style="margin:0 auto">
-        <div class="cd-row">
-          <div class="cd-unit"><span class="cd-value" id="cdDias">000</span><span class="cd-lbl">D&iacute;as</span></div>
-          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
-          <div class="cd-unit"><span class="cd-value" id="cdHoras">00</span><span class="cd-lbl">Horas</span></div>
-          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
-          <div class="cd-unit"><span class="cd-value" id="cdMins">00</span><span class="cd-lbl">Min</span></div>
-          <div class="cd-sep"><div class="cd-dot"></div><div class="cd-dot"></div></div>
-          <div class="cd-unit"><span class="cd-value" id="cdSecs">00</span><span class="cd-lbl">Seg</span></div>
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#888"/>
+            <stop offset="30%" stop-color="#ccc"/>
+            <stop offset="50%" stop-color="#f0f0f0"/>
+            <stop offset="70%" stop-color="#ccc"/>
+            <stop offset="100%" stop-color="#888"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="cd-grid">
+        <div class="cd-circle">
+          <svg viewBox="0 0 140 140">
+            <circle class="cd-track" cx="70" cy="70" r="65"/>
+            <circle class="cd-glow" cx="70" cy="70" r="65" id="cdGlowD"/>
+            <circle class="cd-arc" cx="70" cy="70" r="65" id="cdArcD"/>
+            <circle class="cd-dot-marker" cx="70" cy="5" r="3" id="cdDotD"/>
+          </svg>
+          <div class="cd-inner"><span class="cd-value" id="cdDias">000</span><span class="cd-lbl">D&iacute;as</span></div>
+        </div>
+        <div class="cd-circle">
+          <svg viewBox="0 0 140 140">
+            <circle class="cd-track" cx="70" cy="70" r="65"/>
+            <circle class="cd-glow" cx="70" cy="70" r="65" id="cdGlowH"/>
+            <circle class="cd-arc" cx="70" cy="70" r="65" id="cdArcH"/>
+            <circle class="cd-dot-marker" cx="70" cy="5" r="3" id="cdDotH"/>
+          </svg>
+          <div class="cd-inner"><span class="cd-value" id="cdHoras">00</span><span class="cd-lbl">Horas</span></div>
+        </div>
+        <div class="cd-circle">
+          <svg viewBox="0 0 140 140">
+            <circle class="cd-track" cx="70" cy="70" r="65"/>
+            <circle class="cd-glow" cx="70" cy="70" r="65" id="cdGlowM"/>
+            <circle class="cd-arc" cx="70" cy="70" r="65" id="cdArcM"/>
+            <circle class="cd-dot-marker" cx="70" cy="5" r="3" id="cdDotM"/>
+          </svg>
+          <div class="cd-inner"><span class="cd-value" id="cdMins">00</span><span class="cd-lbl">Minutos</span></div>
+        </div>
+        <div class="cd-circle">
+          <svg viewBox="0 0 140 140">
+            <circle class="cd-track" cx="70" cy="70" r="65"/>
+            <circle class="cd-glow" cx="70" cy="70" r="65" id="cdGlowS"/>
+            <circle class="cd-arc" cx="70" cy="70" r="65" id="cdArcS"/>
+            <circle class="cd-dot-marker" cx="70" cy="5" r="3" id="cdDotS"/>
+          </svg>
+          <div class="cd-inner"><span class="cd-value" id="cdSecs">00</span><span class="cd-lbl">Segundos</span></div>
         </div>
       </div>
     </div>
@@ -657,7 +702,7 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
       <div class="fam-divider"></div>
       <div class="cortejo-col">
         <div class="padrino-role">Best Man</div>
-        <div class="padrino-names">Janitzio G&oacute;mez</div>
+        <div class="padrino-names">Gerardo Caltzoncint</div>
       </div>
     </div>
   </section>
@@ -1086,20 +1131,38 @@ function initScrollReveal(){
   });
 }
 
-/* ── COUNTDOWN (nelly style) ── */
+/* ── COUNTDOWN (circular rings) ── */
 function initCountdown(){
   var target=new Date('2026-10-31T11:00:00-04:00');
   var ids=['Dias','Horas','Mins','Secs'];
+  var arcIds=['cdArcD','cdArcH','cdArcM','cdArcS'];
+  var glowIds=['cdGlowD','cdGlowH','cdGlowM','cdGlowS'];
+  var dotIds=['cdDotD','cdDotH','cdDotM','cdDotS'];
+  var maxes=[365,24,60,60];
+  var circ=2*Math.PI*65;
   var first=true;
   function updateCd(){
     var diff=target-Date.now();
     if(diff<=0){ids.forEach(function(id){var el=document.getElementById('cd'+id);if(el)el.textContent='00';});return;}
     var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
     var vals=[String(d).padStart(3,'0'),String(h).padStart(2,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')];
+    var rawVals=[d,h,m,s];
     ids.forEach(function(id,i){
       var el=document.getElementById('cd'+id);if(!el)return;
-      if(first){el.textContent=vals[i];return;}
-      if(el.textContent!==vals[i]){gsap.to(el,{y:-8,opacity:0,duration:.12,onComplete:function(){el.textContent=vals[i];gsap.to(el,{y:0,opacity:1,duration:.12})}});}
+      if(first){el.textContent=vals[i];}
+      else if(el.textContent!==vals[i]){gsap.to(el,{y:-8,opacity:0,duration:.12,onComplete:function(){el.textContent=vals[i];gsap.to(el,{y:0,opacity:1,duration:.12})}});}
+      var pct=rawVals[i]/maxes[i];
+      var offset=circ-(circ*pct);
+      var arc=document.getElementById(arcIds[i]);
+      var glow=document.getElementById(glowIds[i]);
+      var dot=document.getElementById(dotIds[i]);
+      if(arc)arc.style.strokeDashoffset=offset;
+      if(glow)glow.style.strokeDashoffset=offset;
+      if(dot){
+        var angle=(pct*360-90)*Math.PI/180;
+        var cx=70+65*Math.cos(angle),cy=70+65*Math.sin(angle);
+        dot.setAttribute('cx',cx);dot.setAttribute('cy',cy);
+      }
     });
     first=false;
   }
