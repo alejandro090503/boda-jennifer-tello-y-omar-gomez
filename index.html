@@ -340,6 +340,13 @@ section{padding:64px 26px}
 .rsvp-input{width:100%;padding:14px 18px;border:1.5px solid rgba(122,140,110,.25);border-radius:8px;background:rgba(20,20,20,.6);font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
 .rsvp-input:focus{border-color:var(--sage);background:rgba(20,20,20,.8)}
 .rsvp-input::placeholder{color:rgba(200,200,200,.4);font-style:italic}
+.rsvp-gracias{max-width:340px;margin:0 auto;padding:26px 22px;background:rgba(122,140,110,.10);border:1.5px solid rgba(122,140,110,.35);border-radius:14px;text-align:center}
+.rsvp-gracias-icon{color:var(--sage);margin:0 auto 10px;display:block}
+.rsvp-gracias-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--sage);margin-bottom:8px;line-height:1.35}
+.rsvp-gracias-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;color:var(--dark);opacity:.85;line-height:1.6;margin-bottom:18px}
+.rsvp-editar-btn{padding:11px 22px;border:1.5px solid rgba(122,140,110,.4);background:transparent;cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--gold);border-radius:24px;transition:all .25s}
+.rsvp-editar-btn:hover{background:rgba(122,140,110,.14)}
+.rsvp-editar-btn:disabled{opacity:.45;cursor:not-allowed}
 .btn-wa:disabled{opacity:.55;cursor:not-allowed}
 #rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:600;text-align:center;margin:14px auto 0;max-width:340px;line-height:1.5;min-height:18px;color:var(--gold)}
 .rsvp-deadline{
@@ -665,7 +672,7 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
       </div>
       <div class="padrino-item rv">
         <svg class="padrino-icon" viewBox="0 0 32 32" fill="none" stroke="var(--sage,#7a8c6e)" stroke-width="1.2" stroke-linecap="round"><rect x="6" y="6" width="20" height="24" rx="2"/><line x1="10" y1="12" x2="22" y2="12"/><line x1="10" y1="16" x2="22" y2="16"/><line x1="10" y1="20" x2="18" y2="20"/><path d="M6 6 L16 3 L26 6" opacity=".5"/></svg>
-        <div class="padrino-role">Biblia y Arroz</div>
+        <div class="padrino-role">Biblia y Arras</div>
         <div class="padrino-names">Jessi &amp; Rub&eacute;n</div>
       </div>
       <div class="padrino-item rv">
@@ -843,6 +850,12 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
       <div class="dc-swatch" style="background:#6a3a2a"><span>Cobre Oscuro</span></div>
     </div>
     <p class="dc-phrase rv">Ponte tu mejor vestido, que habr&aacute; gente chismosa y fot&oacute;grafos</p>
+    <p class="dc-phrase rv" style="margin-top:24px;font-size:14px;letter-spacing:4px;opacity:.7">Evitar estos tonos</p>
+    <div class="dc-colors rv" style="max-width:240px;margin-top:12px">
+      <div class="dc-swatch" style="background:#000000;border-color:rgba(200,200,200,.2)"><span>Negro</span></div>
+      <div class="dc-swatch" style="background:#ffffff;border-color:rgba(200,200,200,.3)"><span>Blanco</span></div>
+      <div class="dc-swatch" style="background:#722f37"><span>Vino</span></div>
+    </div>
   </section>
 
   <div class="orn rv">
@@ -1012,16 +1025,27 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
         <span class="rsvp-pases-num" id="rsvp-pases-num">&hellip;</span>
       </div>
 
-      <div class="rsvp-toggle">
-        <button class="rsvp-toggle-btn" id="btnYes" type="button">Asistir&eacute;</button>
-        <button class="rsvp-toggle-btn" id="btnNo" type="button">No podr&eacute; asistir</button>
+      <div id="rsvp-bandeja">
+        <div class="rsvp-toggle">
+          <button class="rsvp-toggle-btn" id="btnYes" type="button">Asistir&eacute;</button>
+          <button class="rsvp-toggle-btn" id="btnNo" type="button">No podr&eacute; asistir</button>
+        </div>
+
+        <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+
+        <button class="btn-wa" id="rsvpBtn" type="button">
+          <span id="rsvp-btn-text">Confirmar asistencia</span>
+        </button>
       </div>
 
-      <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
-
-      <button class="btn-wa" id="rsvpBtn" type="button">
-        <span id="rsvp-btn-text">Confirmar asistencia</span>
-      </button>
+      <div class="rsvp-gracias" id="rsvp-gracias" style="display:none">
+        <svg class="rsvp-gracias-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/>
+        </svg>
+        <p class="rsvp-gracias-title" id="rsvp-gracias-title"></p>
+        <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
+        <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button">Modificar mi respuesta</button>
+      </div>
 
       <p id="rsvp-feedback"></p>
 
@@ -1329,7 +1353,7 @@ function initWheel(){
       var inp = document.createElement('input');
       inp.type = 'text';
       inp.className = 'rsvp-input';
-      inp.placeholder = n === 1 ? 'Tu nombre completo' : 'Invitado ' + (i+1);
+      inp.placeholder = 'Nombre completo del invitado ' + (i+1);
       inp.autocomplete = 'off';
       inp.maxLength = 60;
       inp.value = savedNames[i] || '';
@@ -1353,6 +1377,39 @@ function initWheel(){
     }
   }
 
+  var bandejaEl = document.getElementById('rsvp-bandeja');
+  var graciasEl = document.getElementById('rsvp-gracias');
+  var gTitleEl  = document.getElementById('rsvp-gracias-title');
+  var gSubEl    = document.getElementById('rsvp-gracias-sub');
+  var editarBtn = document.getElementById('rsvp-editar-btn');
+
+  /* Cierra la bandeja y muestra el agradecimiento con el resumen. */
+  function mostrarGracias(estado, nombres){
+    var lista = (nombres || []).filter(function(n){ return n && String(n).trim(); });
+    if(estado === 'confirmado'){
+      gTitleEl.textContent = '¡Gracias por confirmar!';
+      gSubEl.textContent = lista.length === 1
+        ? 'Te esperamos, ' + lista[0] + '.'
+        : 'Confirmamos ' + lista.length + ' lugares: ' + lista.join(', ') + '.';
+    } else {
+      gTitleEl.textContent = 'Gracias por avisarnos';
+      gSubEl.textContent = 'Lamentamos que no puedas acompañarnos. Te vamos a extrañar.';
+    }
+    bandejaEl.style.display = 'none';
+    graciasEl.style.display = '';
+    editarBtn.disabled = frozen;
+    if(feedEl){ feedEl.textContent = ''; feedEl.style.color = ''; }
+  }
+
+  /* Reabre la bandeja conservando lo ya capturado. */
+  function abrirBandeja(){
+    graciasEl.style.display = 'none';
+    bandejaEl.style.display = '';
+    if(feedEl){ feedEl.textContent = ''; feedEl.style.color = ''; }
+  }
+
+  editarBtn.addEventListener('click', function(){ if(!frozen) abrirBandeja(); });
+
   btnYes.addEventListener('click', function(){ selectRsvp('yes'); });
   btnNo.addEventListener('click',  function(){ selectRsvp('no');  });
 
@@ -1373,9 +1430,8 @@ function initWheel(){
           }
           selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
           btnText.textContent = 'Actualizar respuesta';
-          feedEl.textContent = d.estado === 'confirmado'
-            ? '¡Ya tienes confirmada tu asistencia! Puedes actualizar tu respuesta.'
-            : 'Ya tienes registrado que no podrás asistir. Puedes cambiar tu respuesta.';
+          /* Ya hay respuesta guardada: la sección arranca cerrada. */
+          mostrarGracias(d.estado, savedNames);
         }
       })
       .catch(function(){
@@ -1431,10 +1487,7 @@ function initWheel(){
     .then(function(){
       btnText.textContent = 'Actualizar respuesta';
       btnConf.disabled = false;
-      feedEl.style.color = 'var(--gold)';
-      feedEl.textContent = rsvpChoice === 'yes'
-        ? '¡Tu asistencia ha sido confirmada! Nos vemos pronto.'
-        : 'Hemos registrado que no podrás asistir. ¡Gracias por avisarnos!';
+      mostrarGracias(rsvpChoice === 'yes' ? 'confirmado' : 'declino', nombres);
     })
     .catch(function(){
       btnText.textContent = 'Confirmar asistencia';
