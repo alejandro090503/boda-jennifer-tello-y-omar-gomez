@@ -133,6 +133,7 @@ section{padding:64px 26px}
 #siti::before{background-image:url('./bg-watercolor.jpeg');opacity:.30}
 #sdc::before{background-image:url('./bg-botanical.jpeg');opacity:.25}
 #sgifts::before{background-image:url('./bg-leaves.jpeg');opacity:.25}
+#salbum::before{background-image:url('./bg-minimal.jpeg');opacity:.25}
 #srsvp::before{background-image:url('./bg-hero.jpeg');opacity:.28}
 
 /* ── COUNTDOWN (circular rings 2x2) ── */
@@ -389,6 +390,28 @@ section{padding:64px 26px}
 /* ── NO KIDS ── */
 .no-kids{text-align:center;padding:48px 26px}
 .no-kids p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(210,210,210,.8);line-height:1.7;max-width:340px;margin:0 auto}
+
+/* ── ALBUM QR ── */
+#salbum{padding:64px 26px;text-align:center}
+.alb-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(200,200,200,.6);line-height:1.9;margin:16px 0 28px}
+.alb-qr-wrap{text-align:center;margin-bottom:24px}
+.alb-qr-frame{
+  display:inline-block;padding:18px;background:#f5f0e8;border-radius:16px;
+  box-shadow:0 4px 18px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.3),0 0 0 1px rgba(180,180,180,.2);
+}
+.alb-qr{width:clamp(220px,60vw,280px);height:clamp(220px,60vw,280px);display:block;border-radius:6px}
+.alb-scan{margin-top:14px;font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,200,200,.5)}
+.alb-btn{
+  max-width:310px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 18px;border:1.5px solid rgba(180,180,180,.3);border-radius:8px;
+  background:transparent;color:var(--dark);text-decoration:none;
+  font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;
+  transition:transform .2s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden;
+}
+.alb-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(180,180,180,.06),transparent);opacity:0;transition:opacity .3s}
+.alb-btn:active{transform:scale(.96);border-color:rgba(200,200,200,.5)}
+.alb-btn:active::before{opacity:1}
+.alb-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(200,200,200,.35);line-height:1.75;margin-top:22px}
 
 /* ── FOOTER ── */
 footer{padding:50px 20px;text-align:center}
@@ -973,6 +996,39 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
   <div class="no-kids rv">
     <p>&iexcl;Los ni&ntilde;os tambi&eacute;n son parte de la fiesta!</p>
   </div>
+
+  <div class="orn rv">
+    <svg viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="4" y1="12" x2="50" y2="12" stroke="var(--sage,#7a8c6e)" stroke-width=".6" opacity=".25"/>
+      <g stroke="var(--sage,#7a8c6e)" stroke-width=".9" opacity=".4" fill="none" stroke-linecap="round">
+        <path d="M62 16 Q68 6 80 12"/>
+        <path d="M80 12 Q72 10 68 4"/>
+        <path d="M80 12 Q92 6 98 16"/>
+        <path d="M80 12 Q88 10 92 4"/>
+        <circle cx="80" cy="12" r="1.5" fill="#7a8c6e" stroke="none" opacity=".5"/>
+      </g>
+      <line x1="110" y1="12" x2="156" y2="12" stroke="var(--sage,#7a8c6e)" stroke-width=".6" opacity=".25"/>
+    </svg>
+  </div>
+
+  <!-- ALBUM QR -->
+  <section id="salbum" class="section-bg">
+    <div class="eyebrow rv">Captura Cada Momento</div>
+    <h2 class="sec-title rv" style="font-size:44px">&Aacute;lbum Compartido</h2>
+    <p class="alb-sub rv">Escanea el c&oacute;digo QR y sube las fotos<br>que tomes durante el evento.</p>
+    <div class="alb-qr-wrap rv">
+      <div class="alb-qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&color=000000&bgcolor=F5F0E8&data=https%3A%2F%2Fexample.com%2Falbum"
+             alt="QR &aacute;lbum compartido Jennifer y Omar" class="alb-qr" loading="lazy">
+      </div>
+      <p class="alb-scan">Escanea con la c&aacute;mara</p>
+    </div>
+    <a href="https://example.com/album" target="_blank" rel="noopener" class="alb-btn rv">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Ir al &Aacute;lbum
+    </a>
+    <p class="alb-hint rv">Compartir&aacute;s tus fotos con los dem&aacute;s invitados.<br>Podr&aacute;s ver el &aacute;lbum completo despu&eacute;s del evento.</p>
+  </section>
 
   <div class="orn rv">
     <svg viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg">
