@@ -412,6 +412,11 @@ section{padding:64px 26px}
 .alb-btn:active{transform:scale(.96);border-color:rgba(200,200,200,.5)}
 .alb-btn:active::before{opacity:1}
 .alb-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(200,200,200,.35);line-height:1.75;margin-top:22px}
+.album-qr{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:24px}
+.album-qr.bloqueado .alb-qr-frame img{filter:blur(7px);opacity:.75}
+.album-qr.bloqueado .alb-btn{pointer-events:none;opacity:.45}
+.album-aviso{max-width:300px;margin:22px auto 0;font-size:15px;color:rgba(200,200,200,.6)}
+.album-qr:not(.bloqueado) + .album-aviso{display:none}
 
 /* ── FOOTER ── */
 footer{padding:50px 20px;text-align:center}
@@ -1014,20 +1019,29 @@ footer .credit{font-family:'Lato',sans-serif;font-size:10px;color:rgba(200,200,2
   <!-- ALBUM QR -->
   <section id="salbum" class="section-bg">
     <div class="eyebrow rv">Captura Cada Momento</div>
-    <h2 class="sec-title rv" style="font-size:44px">&Aacute;lbum Compartido</h2>
-    <p class="alb-sub rv">Escanea el c&oacute;digo QR y sube las fotos<br>que tomes durante el evento.</p>
-    <div class="alb-qr-wrap rv">
+    <h2 class="sec-title rv" style="font-size:44px">&Aacute;lbum de fotos</h2>
+    <p class="alb-sub rv">Ay&uacute;danos a guardar cada momento: sube aqu&iacute; las fotos que tomes durante el evento.</p>
+    <!-- Álbum de Elysium: el QR abre /album → panel-invitados.vercel.app/subir/boda-jennifer-tello-y-omar-gomez -->
+    <div class="album-qr rv" data-fecha="2026-10-31">
       <div class="alb-qr-frame">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&color=000000&bgcolor=F5F0E8&data=https%3A%2F%2Fexample.com%2Falbum"
-             alt="QR &aacute;lbum compartido Jennifer y Omar" class="alb-qr" loading="lazy">
+        <img src="qr-album.png" alt="C&oacute;digo QR del &aacute;lbum de fotos" class="alb-qr" width="280" height="280">
       </div>
-      <p class="alb-scan">Escanea con la c&aacute;mara</p>
+      <a href="/album" class="alb-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Subir mis fotos
+      </a>
     </div>
-    <a href="https://example.com/album" target="_blank" rel="noopener" class="alb-btn rv">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      Ir al &Aacute;lbum
-    </a>
-    <p class="alb-hint rv">Compartir&aacute;s tus fotos con los dem&aacute;s invitados.<br>Podr&aacute;s ver el &aacute;lbum completo despu&eacute;s del evento.</p>
+    <p class="alb-hint album-aviso rv">El &aacute;lbum de fotos se habilita el d&iacute;a del evento. Regresa aqu&iacute; y sube todas tus fotos de la noche &#10024;</p>
+    <script>
+      /* Se desbloquea solo el día del evento (la base además rechaza fotos antes de tiempo) */
+      (function(){
+        var box = document.querySelector('.album-qr');
+        if(!box) return;
+        var p = box.dataset.fecha.split('-');
+        var abre = new Date(+p[0], +p[1] - 1, +p[2], 0, 0, 0);
+        if(new Date() < abre) box.classList.add('bloqueado');
+      })();
+    </script>
   </section>
 
   <div class="orn rv">
